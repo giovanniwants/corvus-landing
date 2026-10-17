@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corvus — Sovereign AI For The Masses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#07090e',
+                        cardbg: '#0f1420',
+                        gold: '#d4af37',
+                        goldhover: '#e6c555',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .gold-glow { box-shadow: 0 0 35px rgba(212, 175, 55, 0.15); }
+        .border-gold-subtle { border-color: rgba(212, 175, 55, 0.2); }
+    </style>
+</head>
+<body class="bg-obsidian text-slate-100 antialiased selection:bg-gold selection:text-black">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-cardbg border-b border-gold-subtle py-2.5 px-4 text-center text-xs tracking-wider uppercase mono text-gold">
+        🔒 Air-Gapped Local Execution • Zero API Costs • Native macOS Silicon Engine
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between border-b border-slate-800/60">
+        <div class="flex items-center gap-3">
+            <!-- Gold Cartouche Emblem Placeholder / SVG -->
+            <div class="w-9 h-12 rounded-full border-2 border-gold flex items-center justify-center bg-cardbg gold-glow">
+                <span class="text-gold text-sm">𓅃</span>
+            </div>
+            <span class="font-bold text-xl tracking-wider uppercase text-white">Corvus</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="#features" class="text-sm text-slate-400 hover:text-white transition">Architecture</a>
+            <a href="#modes" class="text-sm text-slate-400 hover:text-white transition">Performance Tiers</a>
+            <a href="#download" class="bg-gold hover:bg-goldhover text-black font-medium text-sm px-4 py-2 rounded-lg transition shadow-lg shadow-gold/10">Download .DMG</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="max-w-5xl mx-auto px-6 pt-24 pb-16 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-gold-subtle text-xs text-gold mb-8">
+            <span>⚡️ Powered by Sparse MoE & NVMe SSD Streaming</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6">
+            Sovereign AI <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-amber-500">For The Masses.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+            Run massive frontier-class models completely locally on consumer hardware. Disconnect your internet—Corvus keeps working. Perfect for confidential code, private documents, and zero-compromise privacy. No API costs. No subscriptions. Simply install and run.
+        </p>
+
+        <!-- Call to Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <a href="#download" class="w-full sm:w-auto bg-gold hover:bg-goldhover text-black font-semibold px-8 py-4 rounded-xl transition flex items-center justify-center gap-3 text-base shadow-xl shadow-gold/20">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Download Corvus for macOS (.dmg)
+            </a>
+            <a href="#air-gap" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium px-6 py-4 rounded-xl border border-slate-800 transition">
+                Test Air-Gap Guarantee ↓
+            </a>
+        </div>
+
+        <!-- The Gold Cartouche Visual Banner -->
+        <div class="max-w-md mx-auto bg-cardbg border border-gold-subtle rounded-2xl p-8 gold-glow relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent pointer-events-none"></div>
+            <div class="w-24 h-36 mx-auto rounded-full border-2 border-gold flex flex-col items-center justify-center bg-obsidian mb-4 shadow-inner">
+                <span class="text-4xl">𓅃</span>
+            </div>
+            <h3 class="text-gold font-mono tracking-widest text-sm uppercase mb-1">The Sovereign Seal</h3>
+            <p class="text-slate-400 text-xs">Your machine. Your weights. Absolute data jurisdiction.</p>
+        </div>
+    </section>
+
+    <!-- Zero Pain / Automated Setup Section -->
+    <section id="features" class="max-w-6xl mx-auto px-6 py-20 border-t border-slate-800/60">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4">Zero Configuration. Zero Headaches.</h2>
+            <p class="text-slate-400">Stop wasting hours searching for models, tuning GGUF quants, or manually wiring up SSD offloading servers.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-cardbg border border-slate-800 p-8 rounded-2xl">
+                <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center font-bold mb-6">01</div>
+                <h3 class="text-lg font-semibold text-white mb-2">Auto-Hardware Detection</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">The single `.dmg` installer automatically scans your Mac specs on launch, configuring the optimal execution profile instantly.</p>
+            </div>
+            <div class="bg-cardbg border border-slate-800 p-8 rounded-2xl">
+                <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center font-bold mb-6">02</div>
+                <h3 class="text-lg font-semibold text-white mb-2">Pre-Wired Engines</h3>
+                <p class="text-slate-400 text-sm leading-relaxed"><code class="text-gold mono text-xs">llama.cpp</code>, <code class="text-gold mono text-xs">Sushi/MLX</code>, <code class="text-gold mono text-xs">Turbofieldflare</code>, and <code class="text-gold mono text-xs">Swiftlet</code> are bundled and pre-configured out of the box.</p>
+            </div>
+            <div class="bg-cardbg border border-slate-800 p-8 rounded-2xl">
+                <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center font-bold mb-6">03</div>
+                <h3 class="text-lg font-semibold text-white mb-2">NVMe Streaming</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Leverages cutting-edge hard drive streaming so massive expert models run smoothly on consumer Apple Silicon hardware.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speed Modes Section -->
+    <section id="modes" class="max-w-5xl mx-auto px-6 py-20 border-t border-slate-800/60">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4">Three Intent Modes. Zero Tuning.</h2>
+            <p class="text-slate-400">Corvus makes the hard architectural decisions for you. Choose your execution intensity with a single click.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Mode 1 -->
+            <div class="bg-cardbg border border-slate-800 hover:border-gold-subtle transition p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-wider text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-md">Max Reasoning</span>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-2">Experimental</h3>
+                    <p class="text-slate-400 text-sm mb-6">Crazy smart, frontier-tier analysis. Stream-heavy and optimized for complex logic where precision trumps speed.</p>
+                </div>
+                <div class="border-t border-slate-800 pt-4 text-xs text-slate-500 font-mono">Recommended for deep architecture work</div>
+            </div>
+
+            <!-- Mode 2 -->
+            <div class="bg-cardbg border border-gold rounded-2xl p-6 flex flex-col justify-between gold-glow relative">
+                <div class="absolute -top-3 right-6 bg-gold text-black text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Default Sweet Spot</div>
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-wider text-gold bg-gold/10 px-2.5 py-1 rounded-md">Balanced</span>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-2">Steady & Smart</h3>
+                    <p class="text-slate-400 text-sm mb-6">The ideal everyday engineering and writing companion. Fast enough for fluid chat, deep enough for production code.</p>
+                </div>
+                <div class="border-t border-slate-800 pt-4 text-xs text-gold font-mono">Recommended for daily coding & drafting</div>
+            </div>
+
+            <!-- Mode 3 -->
+            <div class="bg-cardbg border border-slate-800 hover:border-gold-subtle transition p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-md">Instantaneous</span>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-2">Fast & Less Smart</h3>
+                    <p class="text-slate-400 text-sm mb-6">Blazingly fast responses for lightweight summarization, refactoring snippets, and quick shell scripting.</p>
+                </div>
+                <div class="border-t border-slate-800 pt-4 text-xs text-slate-500 font-mono">Recommended for high-velocity iteration</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardware & Pricing Transparency -->
+    <section class="max-w-5xl mx-auto px-6 py-20 border-t border-slate-800/60">
+        <div class="bg-cardbg border border-slate-800 rounded-3xl p-8 md:p-12">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">Fair Tiers for Every Mac.</h2>
+                    <ul class="space-y-4 text-slate-300 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold font-bold">✓</span>
+                            <span><strong>8GB Mac Users:</strong> Get the complete base local functionality entirely free. Run compact models out of the box with zero catch.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold font-bold">✓</span>
+                            <span><strong>16GB+ Mac Users:</strong> Unlock robust baseline local models for free, with advanced 80B+ model streaming gated for power users.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold font-bold">✓</span>
+                            <span><strong>$99 Perpetual License:</strong> One-time purchase for full access to the high-end 80B+ model suite. No recurring cloud fees, ever.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-obsidian border border-gold-subtle p-8 rounded-2xl text-center">
+                    <div class="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">Lifetime Access</div>
+                    <div class="text-5xl font-extrabold text-white mb-2">$99 <span class="text-sm font-normal text-slate-400">USD</span></div>
+                    <p class="text-xs text-slate-400 mb-6">One-time payment • Perpetual offline license</p>
+                    <a href="#download" class="block w-full bg-gold hover:bg-goldhover text-black font-semibold py-3 rounded-xl transition">
+                        Get Corvus Pro
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="max-w-4xl mx-auto px-6 py-20 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to reclaim your AI sovereignty?</h2>
+        <p class="text-slate-400 mb-8 max-w-xl mx-auto">Download the unified macOS installer. Corvus detects your hardware profile instantly upon launch.</p>
+        <div class="inline-flex flex-col items-center">
+            <a href="#" class="bg-gold hover:bg-goldhover text-black font-bold text-lg px-10 py-5 rounded-2xl transition shadow-2xl shadow-gold/20 flex items-center gap-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Download Corvus for Apple Silicon (.dmg)
+            </a>
+            <span class="text-xs text-slate-500 mt-3 font-mono">Requires macOS 14.0+ • Apple Silicon (M1/M2/M3/M4)</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-800/60 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
+        <div>© 2026 Corvus AI. Sovereign, Local, Uncompromising.</div>
+        <div class="flex gap-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-slate-400 transition">Privacy Policy</a>
+            <a href="#" class="hover:text-slate-400 transition">Terms of Service</a>
+            <a href="#" class="hover:text-slate-400 transition">Documentation</a>
+        </div>
+    </footer>
+
+</body>
+</html>
