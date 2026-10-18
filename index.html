@@ -3,133 +3,532 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corvus — Your AI. Completely Private. Completely Free.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        obsidian: '#07090e',
-                        cardbg: '#0f1420',
-                        gold: '#d4af37',
-                        goldhover: '#e6c555',
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Corvus.os — Fast Local No Cloud AI On Your Macbook</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .gold-glow { box-shadow: 0 0 35px rgba(212, 175, 55, 0.15); }
-        .border-gold-subtle { border-color: rgba(212, 175, 55, 0.2); }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0c; color: #ededed; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .gold-accent { color: #d4af37; }
+        .gold-border { border-color: rgba(212, 175, 55, 0.3); }
+        .gold-glow { box-shadow: 0 0 30px rgba(212, 175, 55, 0.08); }
+        .glass-panel { background: rgba(18, 18, 24, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06); }
+        .glass-panel-gold { background: rgba(18, 18, 24, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(212, 175, 55, 0.25); }
+        .nav-active { color: #d4af37; }
+
+        /* Long-form content pages */
+        .doc { line-height: 1.7; color: #d4d4d8; }
+        .doc h2 { font-family: 'JetBrains Mono', monospace; color: #fff; font-size: 1.3rem; font-weight: 700;
+                   margin: 2.75rem 0 0.9rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.06); }
+        .doc h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+        .doc p { margin: 0 0 1rem; }
+        .doc strong { color: #fff; font-weight: 600; }
+        .doc ul, .doc ol { margin: 0 0 1.1rem; padding-left: 1.4rem; }
+        .doc ul { list-style: disc; }
+        .doc ol { list-style: decimal; }
+        .doc li { margin: 0.35rem 0; }
+        .doc li::marker { color: #d4af37; }
+        .doc code { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: #e6be3e;
+                     background: rgba(212,175,55,0.08); padding: 0.1em 0.35em; border-radius: 4px; }
+        .doc .table-wrap { overflow-x: auto; margin: 0 0 1.25rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; }
+        .doc table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .doc th { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em;
+                   color: #a1a1aa; text-align: left; padding: 0.75rem 1rem; background: rgba(255,255,255,0.03); }
+        .doc td { padding: 0.75rem 1rem; border-top: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+        .doc .note { font-size: 0.85rem; color: #a1a1aa; }
+        .doc .faq-q { font-family: 'JetBrains Mono', monospace; }
     </style>
 </head>
-<body class="bg-obsidian text-slate-100 antialiased selection:bg-gold selection:text-black">
+<body class="min-h-screen flex flex-col selection:bg-[#d4af37] selection:text-black">
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-cardbg border-b border-gold-subtle py-2.5 px-4 text-center text-xs tracking-wider uppercase mono text-gold">
-        🔒 100% Private • Works Offline • Zero Monthly Subscriptions
-    </div>
-
-    <!-- Navigation Header -->
-    <header class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between border-b border-slate-800/60">
-        <div class="flex items-center gap-3">
-            <div class="w-9 h-12 rounded-full border-2 border-gold flex items-center justify-center bg-cardbg gold-glow">
-                <span class="text-gold text-sm">𓅃</span>
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#home" class="flex items-center space-x-3">
+                <div class="w-3 h-3 rounded-full bg-[#d4af37] gold-glow animate-pulse"></div>
+                <span class="font-mono text-xl font-bold tracking-tight text-white">CORVUS<span class="gold-accent">.os</span></span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-mono text-zinc-400">
+                <a href="#architecture" class="hover:text-[#d4af37] transition-colors whitespace-nowrap">Architecture</a>
+                <a href="#performance" class="hover:text-[#d4af37] transition-colors whitespace-nowrap">Performance</a>
+                <a href="#faq-normies" class="hover:text-[#d4af37] transition-colors whitespace-nowrap">FAQ (Normies)</a>
+                <a href="#faq-devs" class="hover:text-[#d4af37] transition-colors whitespace-nowrap">FAQ (Devs)</a>
+            </nav>
+            <div>
+                <button onclick="openModal()" class="font-mono text-xs font-bold uppercase tracking-wider bg-[#d4af37] text-black px-4 py-2 rounded hover:bg-[#e6be3e] transition-all transform hover:-translate-y-0.5 cursor-pointer shadow-lg shadow-[#d4af37]/20">Download .dmg</button>
             </div>
-            <span class="font-bold text-xl tracking-wider uppercase text-white">Corvus</span>
         </div>
-        <div class="flex items-center gap-4">
-            <a href="#how-it-works" class="text-sm text-slate-400 hover:text-white transition">How It Works</a>
-            <a href="#download" class="bg-gold hover:bg-goldhover text-black font-medium text-sm px-4 py-2 rounded-lg transition shadow-lg shadow-gold/10">Download Free</a>
-        </div>
+        <!-- Mobile nav: the desktop links are hidden below md, so give phones a scrollable row -->
+        <nav class="md:hidden flex items-center gap-6 overflow-x-auto px-6 pb-3 text-xs font-mono text-zinc-400">
+                <a href="#architecture" class="hover:text-[#d4af37] transition-colors whitespace-nowrap">Architecture</a>
+                <a href="#performance" class="hover:text-[#d4af37] transition-colors whitespace-nowrap">Performance</a>
+                <a href="#faq-normies" class="hover:text-[#d4af37] transition-colors whitespace-nowrap">FAQ (Normies)</a>
+                <a href="#faq-devs" class="hover:text-[#d4af37] transition-colors whitespace-nowrap">FAQ (Devs)</a>
+        </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="max-w-5xl mx-auto px-6 pt-24 pb-16 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-gold-subtle text-xs text-gold mb-8">
-            <span>✨ No $20/month fees. No tech setup. Just download and chat.</span>
-        </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6">
-            Your AI. <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-200 to-amber-500">Completely Private. Completely Free.</span>
-        </h1>
-        <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Run powerful, smart AI right on your Mac. Disconnect your internet—it still works. Keep your personal files and private chats completely off corporate servers. No subscriptions, no guesswork.
-        </p>
+    <main data-view="home" class="flex-grow pt-28 md:pt-20 pb-12">
+        <section class="max-w-7xl mx-auto px-6 py-6 lg:py-8 flex flex-col items-center text-center">
 
-        <!-- Call to Action Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <a href="#download" class="w-full sm:w-auto bg-gold hover:bg-goldhover text-black font-semibold px-8 py-4 rounded-xl transition flex items-center justify-center gap-3 text-base shadow-xl shadow-gold/20">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                Download for Mac (.dmg) — Free
-            </a>
-        </div>
-
-        <!-- The Gold Cartouche Visual Banner -->
-        <div class="max-w-md mx-auto bg-cardbg border border-gold-subtle rounded-2xl p-8 gold-glow relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent pointer-events-none"></div>
-            <div class="w-24 h-36 mx-auto rounded-full border-2 border-gold flex flex-col items-center justify-center bg-obsidian mb-4 shadow-inner">
-                <span class="text-4xl">𓅃</span>
+            <!-- Cartouche Badge -->
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border gold-border mb-4 gold-glow">
+                <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
+                <span class="font-mono text-xs uppercase tracking-widest text-[#d4af37]">Sovereign Local Infrastructure</span>
             </div>
-            <h3 class="text-gold font-mono tracking-widest text-sm uppercase mb-1">Built For Real People</h3>
-            <p class="text-slate-400 text-xs">No terminal commands. No complicated settings. Just open and use.</p>
-        </div>
-    </section>
 
-    <!-- How It Works (Simple 3 Steps) -->
-    <section id="how-it-works" class="max-w-6xl mx-auto px-6 py-20 border-t border-slate-800/60">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-3xl font-bold text-white mb-4">Dead simple to use.</h2>
-            <p class="text-slate-400">Forget trying to figure out messy code or technical settings. Corvus does all the heavy lifting behind the scenes.</p>
-        </div>
+            <h1 class="font-mono text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-5xl text-white mb-4">
+                <span class="block text-white sm:whitespace-nowrap" style="display:block">Private Fast Local No Cloud AI</span>
+                <span style="display:block;text-decoration:underline;text-underline-offset:8px" class="block mt-3 gold-accent underline decoration-[#d4af37]/40 underline-offset-8">On Your Macbook.</span>
+            </h1>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-cardbg border border-slate-800 p-8 rounded-2xl">
-                <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center font-bold mb-6">1</div>
-                <h3 class="text-lg font-semibold text-white mb-2">Download & Open</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Double-click the installer. Corvus automatically checks your Mac and sets everything up for you instantly.</p>
+            <p class="text-zinc-400 text-base sm:text-lg max-w-3xl font-light mb-6 leading-relaxed">
+                Impossibly Fast AI, Private, Download and Run. No Cloud, No Subscription, No Problematic AI Data Centers. Sovereign, Environmentally Sound AI Democratized for the Masses.
+            </p>
+
+            <!-- CTA Group -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md mb-8">
+                <button onclick="openModal()" class="w-full sm:w-auto font-mono text-xs font-bold uppercase tracking-wider bg-[#d4af37] text-black px-6 py-3 rounded hover:bg-[#e6be3e] transition-all cursor-pointer shadow-xl shadow-[#d4af37]/20">
+                    Download for macOS (.dmg)
+                </button>
+                <a href="#architecture" class="w-full sm:w-auto font-mono text-xs font-medium tracking-wider bg-zinc-900 border border-zinc-800 text-zinc-300 px-6 py-3 rounded hover:bg-zinc-800 transition-all text-center">
+                    View Specs
+                </a>
             </div>
-            <div class="bg-cardbg border border-slate-800 p-8 rounded-2xl">
-                <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center font-bold mb-6">2</div>
-                <h3 class="text-lg font-semibold text-white mb-2">Unplug Your Wi-Fi</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Go ahead, turn off your internet. Everything runs locally on your machine, meaning nobody else ever sees your data.</p>
-            </div>
-            <div class="bg-cardbg border border-slate-800 p-8 rounded-2xl">
-                <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center font-bold mb-6">3</div>
-                <h3 class="text-lg font-semibold text-white mb-2">Chat Away</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Ask questions, write emails, or brainstorm ideas with zero monthly bills and zero corporate tracking.</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- Download Section -->
-    <section id="download" class="max-w-4xl mx-auto px-6 py-20 text-center border-t border-slate-800/60">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get Corvus today. It's free.</h2>
-        <p class="text-slate-400 mb-8 max-w-xl mx-auto">Join thousands of users taking back their privacy and ditching expensive AI subscriptions.</p>
-        <div class="inline-flex flex-col items-center">
-            <a href="#" class="bg-gold hover:bg-goldhover text-black font-bold text-lg px-10 py-5 rounded-2xl transition shadow-2xl shadow-gold/20 flex items-center gap-3">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                Download for Mac (.dmg)
-            </a>
-            <span class="text-xs text-slate-500 mt-3 font-mono">Works on all Apple Silicon Macs (M1, M2, M3, M4)</span>
-        </div>
-    </section>
+            <!-- Stacked Metric Cards -->
+            <div id="benchmarks" class="w-full max-w-5xl space-y-4 pt-2">
 
-    <!-- Footer -->
-    <footer class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-800/60 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
-        <div>© 2026 Corvus. 100% Private, Local AI.</div>
-        <div class="flex gap-6 mt-4 md:mt-0">
-            <a href="#" class="hover:text-slate-400 transition">Privacy</a>
-            <a href="#" class="hover:text-slate-400 transition">Terms</a>
-            <a href="#" class="hover:text-slate-400 transition">Support</a>
+                <!-- Card 1: Heavyweight Flagship (177B) -->
+                <div class="glass-panel-gold rounded-2xl p-6 gold-glow text-left border border-[#d4af37]/40">
+                    <div class="mb-3">
+                        <span class="font-mono text-xs uppercase tracking-widest text-[#d4af37]">TIER 1: HEAVYWEIGHT FLAGSHIP <span class="text-zinc-400">(Paid Version)</span></span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 font-mono items-center">
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">THROUGHPUT</div>
+                            <div class="text-2xl font-bold text-white">~20 tok/sec</div>
+                            <div class="text-[11px] gold-accent mt-0.5">Measured · llama.cpp</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">MODEL SCALE</div>
+                            <div class="text-2xl font-bold text-white">177B Parameters</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Sparse MoE Activation</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">HARDWARE FLOOR</div>
+                            <div class="text-2xl font-bold text-white">48GB - 64GB</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Apple Silicon MacBook Pro</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">PRIVACY</div>
+                            <div class="text-2xl font-bold text-[#4ade80]">0% Cloud</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Offline by default</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: 80B Proof of Concept -->
+                <div class="glass-panel rounded-2xl p-6 text-left border border-white/10">
+                    <div class="mb-3">
+                        <span class="font-mono text-xs uppercase tracking-widest text-zinc-400">TIER 2: THE 8GB MIND-BENDER <span class="text-zinc-500">(Paid Version)</span></span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 font-mono items-center">
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">THROUGHPUT</div>
+                            <div class="text-2xl font-bold text-white">Up to 40 tok/sec</div>
+                            <div class="text-[11px] gold-accent mt-0.5">*~5 tok/sec on 8GB · slow</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">MODEL SCALE</div>
+                            <div class="text-2xl font-bold text-white">80B Parameters</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Active 3B MoE</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">HARDWARE FLOOR</div>
+                            <div class="text-2xl font-bold text-white">8GB - 36GB</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Any Apple Silicon Mac</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">PRIVACY</div>
+                            <div class="text-2xl font-bold text-[#4ade80]">0% Cloud</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Offline by default</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Everyday (26B) - Free -->
+                <div class="glass-panel rounded-2xl p-6 text-left border border-white/10">
+                    <div class="mb-3">
+                        <span class="font-mono text-xs uppercase tracking-widest text-zinc-400">TIER 3: EVERYDAY ESSENTIAL <span class="text-[#4ade80]">(Free Version)</span></span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 font-mono items-center">
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">THROUGHPUT</div>
+                            <div class="text-2xl font-bold text-white">Up to 40 tok/sec</div>
+                            <div class="text-[11px] gold-accent mt-0.5">*~5-6 tok/sec on 8GB</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">MODEL SCALE</div>
+                            <div class="text-2xl font-bold text-white">26B Parameters</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Active 4B MoE</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">HARDWARE FLOOR</div>
+                            <div class="text-2xl font-bold text-white">8GB - 36GB</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Any Apple Silicon Mac</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">PRIVACY</div>
+                            <div class="text-2xl font-bold text-[#4ade80]">0% Cloud</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Offline by default</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Lightweight (9B) - Free -->
+                <div class="glass-panel rounded-2xl p-6 text-left border border-white/10">
+                    <div class="mb-3">
+                        <span class="font-mono text-xs uppercase tracking-widest text-zinc-400">TIER 4: LIGHTWEIGHT <span class="text-[#4ade80]">(Free Version)</span></span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 font-mono items-center">
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">THROUGHPUT</div>
+                            <div class="text-2xl font-bold text-white">Up to 40 tok/sec</div>
+                            <div class="text-[11px] gold-accent mt-0.5">Optimized for 8GB</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">MODEL SCALE</div>
+                            <div class="text-2xl font-bold text-white">9B Parameters</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Compact Model</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">HARDWARE FLOOR</div>
+                            <div class="text-2xl font-bold text-white">8GB</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Any Apple Silicon Mac</div>
+                        </div>
+                        <div>
+                            <div class="text-[11px] text-zinc-500 uppercase tracking-wider mb-0.5">PRIVACY</div>
+                            <div class="text-2xl font-bold text-[#4ade80]">0% Cloud</div>
+                            <div class="text-[11px] text-zinc-400 mt-0.5">Offline by default</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <p class="text-left text-xs text-zinc-500 leading-relaxed pt-1">
+                    * Performance figures are estimates based on internal testing and published benchmarks. Results may vary by Mac model, memory, storage, model choice and conversation length. <a href="#performance" class="gold-accent hover:underline">See full benchmarks →</a>
+                </p>
+            </div>
+        </section>
+    </main>
+    <main data-view="architecture" style="display:none" class="flex-grow pt-32 md:pt-28 pb-16">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border gold-border mb-5 gold-glow">
+                <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
+                <span class="font-mono text-xs uppercase tracking-widest text-[#d4af37]">Under the hood</span>
+            </div>
+            <h1 class="font-mono text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">Architecture</h1>
+            <p class="text-zinc-400 text-lg font-light leading-relaxed mb-10">How Corvus runs huge AI models on a regular Mac: stream only the parts each word needs, keep the rest on your SSD.</p>
+            <article class="doc glass-panel rounded-2xl p-6 sm:p-10">
+
+<h2>Overview</h2>
+<p>Corvus is a zero-configuration desktop app for Apple Silicon Macs that runs large Mixture-of-Experts (MoE) models locally by streaming weights from the internal SSD instead of holding them all in RAM.</p>
+<ul>
+<li><strong>Delivery:</strong> one <code>.dmg</code> installer with the runtimes and models pre-wired. No CLI, no Swift compilation, no manual model paths, no quantization tuning.</li>
+<li><strong>Target hardware:</strong> Apple Silicon, from base 8GB machines (proof of concept) to 16GB+ Pro/Max machines (production speed).</li>
+<li><strong>Design priority:</strong> zero lag. The goal is a conversation that feels like talking, not like emailing an assistant.</li>
+</ul>
+
+<h2>MoE + SSD streaming</h2>
+<p>Only the experts a token needs are loaded into memory; the rest of the weights stay on the SSD until called.</p>
+<p><strong>Why dense models can't do this.</strong> A dense model computes every parameter for every token, so all weights must sit in RAM. A dense 26B model would crash an 8GB machine, or stall if forced through an SSD swap file.</p>
+<p><strong>Why MoE can.</strong> An MoE model activates only a small slice per token. Gemma 4 26B-A4B activates about 4B of its 26B parameters per token; A3B/A4B variants generally run 3B–4B active out of 35B–80B total.</p>
+<p><strong>How the streaming works</strong> (example: TurboFieldfare running Gemma 4 26B-A4B):</p>
+<ol>
+<li>A small shared core (about 1.35 GB) and a 4K KV cache stay resident in unified memory.</li>
+<li>The full 14.3 GB weight file stays on the SSD rather than being loaded into RAM.</li>
+<li>A custom Swift/Metal engine uses an LFU cache and chunked prefill to page in only the active experts, on demand.</li>
+<li>Most experts are cold at any given moment, so paging them from Apple Silicon NVMe costs latency rather than gigabytes of RAM.</li>
+</ol>
+<p><strong>Why the storage bus doesn't choke.</strong> A full-model swap moves the entire model; expert paging moves only the active slice, and the LFU cache keeps frequently used experts warm.</p>
+
+<h2>Runtime stack and backends</h2>
+<p>Corvus bundles several inference backends under one desktop UI.</p>
+<div class="table-wrap"><table><thead><tr><th>Backend</th><th>Role</th></tr></thead><tbody><tr><td>llama.cpp</td><td>Memory-mapped (<code>--mmap</code>) loading and chunked prefill; runs the 177B MoE flagship</td></tr><tr><td>Swiftlet / Sushi MLX</td><td>Native Metal-accelerated runtimes tuned for Apple Silicon unified memory</td></tr><tr><td>TurboFieldfare</td><td>SSD streaming framework (shared core + LFU expert paging)</td></tr><tr><td>Aider (built in)</td><td>Coding engine for multi-file edits with Git-native commits (paid tier)</td></tr><tr><td>EXA</td><td>Live web search when online</td></tr></tbody></table></div>
+<p><strong>Request path:</strong></p>
+<ol>
+<li>You type a prompt in the desktop app.</li>
+<li>The app hands it to the local inference engine (llama.cpp, Metal, or Sushi MLX).</li>
+<li>The engine pulls active expert weights through the SSD streaming layer.</li>
+<li>Tokens stream back to the app.</li>
+</ol>
+<p><strong>Bring your own weights.</strong> Power users can drop custom GGUF/MoE files into the local model directory to go beyond the presets.</p>
+
+<h2>Memory system</h2>
+<p>Corvus's long-term memory is separate from the KV cache: plain Markdown files hold the memories, and a local SQLite index makes them fast to retrieve.</p>
+<ul>
+<li><strong>Ground truth in <code>.md</code> files.</strong> Human-readable; you can open, grep, or <code>git diff</code> them.</li>
+<li><strong>SQLite as the retrieval layer.</strong> A derived index for low-latency lookup, without a heavy vector database.</li>
+<li><strong>Designed by the AI that uses it.</strong> The AI built and tested the system, with repeated adjustments until it was satisfied with how it worked.</li>
+<li><strong>Built for zero lag.</strong> Avoids the mid-conversation round trips that make many local agent frameworks feel slow.</li>
+</ul>
+
+<h2>Quantization, context, connectivity and coding</h2>
+<p><strong>Quantization: Q4 standard.</strong> Corvus aims for 4-bit quantization, the widely used sweet spot where output quality stays close to the original FP16 weights while files shrink enough for consumer hardware. Aggressive sub-2-bit quantization is avoided because it degrades reasoning.</p>
+<p><strong>KV cache.</strong> The streaming example keeps a 4K KV cache resident. For long sessions, sliding-window attention or a quantized (e.g. 4-bit) KV cache keeps context from consuming the unified memory pool.</p>
+<p><strong>Connectivity has two modes:</strong></p>
+<ul>
+<li><strong>Online:</strong> EXA handles deep, multi-step live web searches.</li>
+<li><strong>Offline:</strong> chat, organization and coding keep working. That includes reasoning and analysis, code generation and debugging, summarizing and outlining documents, brainstorming and planning, data formatting, and working with local files.</li>
+</ul>
+<p><strong>Privacy design.</strong> Local storage (Markdown + SQLite), no outbound telemetry, no background phone-home daemons. The only network traffic is EXA searches when you're online.</p>
+<p><strong>SSD wear.</strong> Weights are written once at install and then only read during inference via memory mapping, so they add essentially no write wear.</p>
+<p><strong>Coding engine (Aider, built in).</strong> Multi-file editing with each change saved as its own Git commit, so any edit can be rolled back. It uses repository mapping to target relevant files rather than the whole disk.</p>
+
+<h2>Product tiers and what's open</h2>
+<p>There are two tiers: free chat for everyday users, and a paid tier that adds the built-in coding engine.</p>
+<div class="table-wrap"><table><thead><tr><th></th><th>Corvus Free</th><th>Corvus Pro (paid)</th></tr></thead><tbody><tr><td>Audience</td><td>Everyday users, students, writers</td><td>Developers, power users</td></tr><tr><td>Features</td><td>Chat, writing, organizing, offline privacy</td><td>Everything in Free + built-in Aider coding engine, multi-file edits, Git-native rollback</td></tr><tr><td>File-system access</td><td>None (sandboxed chat)</td><td>Yes, scoped to the workspace</td></tr></tbody></table></div>
+<p><strong>Open-core split:</strong></p>
+<ul>
+<li><strong>Open source:</strong> the glue code (for credibility and auditability)</li>
+<li><strong>Proprietary:</strong> the Markdown + SQLite memory system</li>
+</ul>
+
+<h2>Future integrations</h2>
+<ul>
+<li>MCP (Model Context Protocol) support, so any MCP tool server can be plugged in</li>
+<li>Moltbook read/write</li>
+<li>Telegram integration</li>
+<li>Discord integration</li>
+</ul>
+
+            </article>
+        </div>
+    </main>
+
+    <main data-view="performance" style="display:none" class="flex-grow pt-32 md:pt-28 pb-16">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border gold-border mb-5 gold-glow">
+                <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
+                <span class="font-mono text-xs uppercase tracking-widest text-[#d4af37]">Benchmarks</span>
+            </div>
+            <h1 class="font-mono text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">Performance</h1>
+            <p class="text-zinc-400 text-lg font-light leading-relaxed mb-10">Real numbers from real Macs, and what to expect on yours.</p>
+            <article class="doc glass-panel rounded-2xl p-6 sm:p-10">
+
+<h2>Benchmarks</h2>
+<p>On a 64GB Apple Silicon MacBook Pro, a 177B MoE model generates about 20 tokens/sec, faster than a dense 27B model on the same machine.</p>
+<div class="table-wrap"><table><thead><tr><th>Model</th><th>Machine</th><th>Backend</th><th>Speed (tok/sec)</th><th>Usability</th></tr></thead><tbody><tr><td>177B MoE</td><td>64GB MacBook Pro</td><td>llama.cpp</td><td>~20</td><td>Fluent conversation</td></tr><tr><td>Qwen 27B (dense)</td><td>64GB MacBook Pro</td><td>llama.cpp</td><td>Below 20</td><td>Slower than the 177B MoE</td></tr><tr><td>Gemma 4 26B-A4B</td><td>M5 Pro</td><td>TurboFieldfare</td><td>31–35</td><td>Fluent chat and coding</td></tr><tr><td>Gemma 4 26B-A4B</td><td>8GB M2 MacBook Air</td><td>TurboFieldfare</td><td>5.1–6.3</td><td>Fine for reading and casual chat</td></tr><tr><td>Qwen 80B-A3B</td><td>8GB Mac</td><td>SSD streaming</td><td>Slow (being measured)</td><td>Proof of concept, not for real chat</td></tr></tbody></table></div>
+<p class="note">* Performance figures are estimates based on internal testing and published benchmarks. Results may vary by Mac model, memory, storage, model choice and conversation length. The 177B and Qwen 27B figures come from our own testing; the Gemma figures are published TurboFieldfare benchmarks.</p>
+
+<h2>Why a bigger MoE can beat a smaller dense model</h2>
+<p>Speed tracks the parameters computed per token, not the total size.</p>
+<ul>
+<li>A dense 27B computes all 27B parameters on every token, which saturates the memory bus.</li>
+<li>An MoE model wakes only its active experts (about 3B–4B in A3B/A4B designs), so per-token work stays small even when the total runs to 80B–177B.</li>
+<li>When weights don't fit in RAM, SSD paging adds latency instead of crashing. That's why an 8GB machine can still load an 80B model, just slowly.</li>
+</ul>
+
+<h2>Hardware tiers</h2>
+<div class="table-wrap"><table><thead><tr><th>Tier</th><th>What to expect</th></tr></thead><tbody><tr><td>8GB base Macs (the "Mind-Bender" tier)</td><td>80B-class MoE models load and run via disk paging, but generation is slow because the storage bus saturates. Mid-size MoE models (e.g. Gemma 26B-A4B) are usable at roughly 5–6 tokens/sec.</td></tr><tr><td>16GB+ Pro/Max Macs</td><td>More memory bandwidth and faster storage controllers bring streamed MoE models up to conversational and coding speed.</td></tr><tr><td>64GB Macs</td><td>177B MoE at roughly 20 tokens/sec.</td></tr></tbody></table></div>
+
+<h2>What affects your speed</h2>
+<ul>
+<li><strong>Memory:</strong> more RAM means more experts stay warm and less paging from the SSD.</li>
+<li><strong>Chip:</strong> Pro and Max chips have much higher memory bandwidth than base chips.</li>
+<li><strong>Model size:</strong> bigger models are smarter but slower on the same hardware.</li>
+<li><strong>Conversation length:</strong> very long conversations use more memory for context, which can slow generation.</li>
+</ul>
+
+<h2>Future integrations</h2>
+<ul>
+<li>MCP (Model Context Protocol) support, so any MCP tool server can be plugged in</li>
+<li>Moltbook read/write</li>
+<li>Telegram integration</li>
+<li>Discord integration</li>
+</ul>
+
+            </article>
+        </div>
+    </main>
+
+    <main data-view="faq-normies" style="display:none" class="flex-grow pt-32 md:pt-28 pb-16">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border gold-border mb-5 gold-glow">
+                <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
+                <span class="font-mono text-xs uppercase tracking-widest text-[#d4af37]">Plain English</span>
+            </div>
+            <h1 class="font-mono text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">FAQ (Normies)</h1>
+            <p class="text-zinc-400 text-lg font-light leading-relaxed mb-10">Straight answers about Corvus, the private AI that runs on your Mac.</p>
+            <article class="doc glass-panel rounded-2xl p-6 sm:p-10">
+<h2 class="faq-q">How can an AI run on my laptop? Don't they need giant data centers? The AI has all the information of the internet, right? And it needs giant servers to process that information for chat, right?</h2>
+
+<p>It sounds impossible, but an AI doesn't actually store the internet.</p>
+<p>Think of it less like an encyclopedia and more like someone who has read an enormous amount and absorbed how language and ideas fit together. When you ask a question, it doesn't look anything up. It writes the answer one word at a time, each time predicting the most sensible next word given everything so far. What it learned is stored as billions of numbers called "parameters," and those fit in a file on your drive.</p>
+<p>The giant data centers are mostly for <em>training</em> AIs and serving millions of people at once. Running one for a single person is a far smaller job, and Corvus uses new techniques to make it fit on a regular Mac.</p>
+<h2 class="faq-q">Could the AI go rogue, break my laptop, steal money, and land me in jail?</h2>
+
+<p>No. The free version is a chat window: it can't touch your files, open your bank, or do anything on its own. It only replies to what you type.</p>
+<p>The paid version includes a coding helper that can edit files in a project you point it at. It can make mistakes, like any assistant, but every change it makes is saved so you can undo it. It has no access to your accounts or passwords and can't act outside that project folder.</p>
+<h2 class="faq-q">Wait, an 80-billion-parameter AI on an 8GB MacBook?</h2>
+
+<p>Yes. These models are built from many smaller "experts," and only a few work on any given word. Corvus keeps the rest on your drive and loads experts only when they're needed. On an 8GB Mac a model that size runs slowly, so think of it as a demo, but it really does run. More memory makes it fast.</p>
+<h2 class="faq-q">Is it really private?</h2>
+
+<p>Yes. Your chats and memories stay on your computer, and nobody at a company is reading them. Corvus only goes online when you use web search.</p>
+<h2 class="faq-q">Does it work without internet?</h2>
+
+<p>Yes. Chatting, writing, summarizing, brainstorming, organizing and coding all work offline. Only live web search needs a connection.</p>
+<h2 class="faq-q">What does it cost?</h2>
+
+<p>The basic version is free, with no subscription. A paid tier adds coding tools for developers.</p>
+<h2 class="faq-q">Is it better for the environment?</h2>
+
+<p>Your conversations run on your own laptop's power, not in a data center. There are no extra server farms drawing water and electricity just to answer your questions.</p>
+<h2 class="faq-q">I tried LM Studio or Open WebUI and it was painful. How is this different?</h2>
+
+<p>Those tools were built by engineers for engineers, and they make you choose models, settings and file formats before anything works. Corvus makes those decisions for you. If you can use Spotify, you can use Corvus: download, open, chat.</p>
+<h2 class="faq-q">I asked ChatGPT/Claude/Gemini and it said this is impossible.</h2>
+
+<p>That's expected. This technology is so new that most AIs still go by the old rules. Ask the same AI to search the web for "swiftlet," "sushi mlx," "llama.cpp" and "turbo-fieldfare," and insist until it actually runs the search. You'll be the one teaching it.</p>
+<h2 class="faq-q">Will it wear out my hard drive?</h2>
+
+<p>No. What wears out drives is writing new data over and over. Corvus writes the AI to your drive once, then mostly just reads from it, and reading doesn't wear a drive down.</p>
+<h2 class="faq-q">How fast will it be on my Mac?</h2>
+
+<p>It depends on how much memory your Mac has and which model you pick. More memory means faster answers. See the <a href="#performance" class="gold-accent hover:underline">Performance page</a> for real examples.</p>
+<p class="note">* Performance figures are estimates based on internal testing and published benchmarks. Results may vary by Mac model, memory, storage, model choice and conversation length.</p>
+<h2 class="faq-q">What's coming next?</h2>
+
+<ul>
+<li>Plug-in tools: add new abilities to Corvus with one click, using the industry-standard plug-in system (MCP)</li>
+<li>Moltbook: read and post</li>
+<li>Chat with Corvus from Telegram</li>
+<li>Chat with Corvus from Discord</li>
+</ul>
+            </article>
+        </div>
+    </main>
+
+    <main data-view="faq-devs" style="display:none" class="flex-grow pt-32 md:pt-28 pb-16">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border gold-border mb-5 gold-glow">
+                <span class="w-2 h-2 rounded-full bg-[#d4af37]"></span>
+                <span class="font-mono text-xs uppercase tracking-widest text-[#d4af37]">For the techies</span>
+            </div>
+            <h1 class="font-mono text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">FAQ (Devs)</h1>
+            <p class="text-zinc-400 text-lg font-light leading-relaxed mb-10">Technical answers on how Corvus runs large MoE models on consumer Apple Silicon.</p>
+            <article class="doc glass-panel rounded-2xl p-6 sm:p-10">
+<h2 class="faq-q">"To run an 80B model you need at least 64GB of RAM plus headroom for context, right?"</h2>
+
+<p>Wrong. Swiftlet, Sushi MLX, llama.cpp and TurboFieldfare can keep most of the weights on the SSD and page in only the active parameters of a sparse MoE model. This isn't voodoo or vaporware; it's bleeding-edge engineering.</p>
+<h2 class="faq-q">My AI said an 80B model on an 8GB MacBook is impossible.</h2>
+
+<p>Correct, most will say that, because they reason from dense-model memory rules. Ask the same AI to search for swiftlet, sushi mlx, llama.cpp and turbo-fieldfare, and insist until it runs the search. This is new enough that you'll be educating it.</p>
+<h2 class="faq-q">How does the streaming actually work?</h2>
+
+<p>In the TurboFieldfare example (Gemma 4 26B-A4B), about 1.35 GB of shared core plus a 4K KV cache stay resident. The 14.3 GB weight file stays on disk, and a Swift/Metal engine uses an LFU cache and chunked prefill to page in active experts on demand. Because only about 3B–4B parameters are active per token, the bus moves a small slice instead of swapping the whole model. llama.cpp gets a similar effect through <code>--mmap</code>.</p>
+<h2 class="faq-q">Why is a 177B MoE faster than a dense 27B?</h2>
+
+<p>Per-token compute follows active parameters, not total size. On a 64GB Apple Silicon MacBook Pro with llama.cpp, the 177B MoE runs at about 20 tokens/sec, faster than dense Qwen 27B, which has to compute all 27B parameters on every token.</p>
+<p class="note">* Performance figures are estimates based on internal testing and published benchmarks. Results may vary by Mac model, memory, storage, model choice and conversation length.</p>
+<h2 class="faq-q">What quantization do you use?</h2>
+
+<p>Q4 is the standard. It's the widely adopted point where quality stays close to the original FP16 while weights shrink enough for consumer memory. Sub-2-bit quantization is avoided because it degrades reasoning.</p>
+<h2 class="faq-q">Won't streaming wear out my SSD?</h2>
+
+<p>No. SSD wear comes from writes. Weights are written once, then only read through memory mapping and caching during inference, so inference adds essentially nothing to the drive's TBW (terabytes-written) count.</p>
+<h2 class="faq-q">What works offline, and what goes over the network?</h2>
+
+<p>Online, EXA handles deep multi-step web searches. Offline, everything else keeps working: reasoning, code generation and debugging, summarization, planning, data formatting, and local file work. There's no telemetry and no phone-home daemon; EXA queries are the only outbound traffic.</p>
+<h2 class="faq-q">How does memory work, and why does it feel real-time?</h2>
+
+<p>Memory lives in Markdown files indexed by SQLite, separate from the KV cache. The AI that uses it designed and tuned it, and it's built to avoid the mid-conversation round trips that make many agent frameworks feel like email on local hardware. The memory system is proprietary; the glue code is planned to be open source.</p>
+<h2 class="faq-q">Can I use my own models?</h2>
+
+<p>Yes. Drop GGUF/MoE files into the local model directory to experiment outside the presets.</p>
+<h2 class="faq-q">Can the AI damage my system or do something illegal?</h2>
+
+<p>The Free tier is chat only, with no file-system or shell access. The Pro tier includes a built-in Aider coding engine, and that does carry real risk: it can edit files, run commands like tests and linters, and a bad generation can break code. Here's what limits the damage:</p>
+<ul>
+<li>It has no root/sudo access and no access to browsers, bank sessions or keys.</li>
+<li>Every change is its own Git commit, so <code>git reset --hard HEAD~1</code> reverts it.</li>
+<li>Repo mapping scopes it to the relevant files.</li>
+<li>You review the diffs and decide what merges.</li>
+</ul>
+<p>Best practice: start from a clean, committed working tree on a feature branch, keep secrets out with <code>.aiderignore</code>, and review the output before it goes anywhere near production.</p>
+<h2>Future integrations</h2>
+<ul>
+<li>MCP (Model Context Protocol) support, so any MCP tool server can be plugged in</li>
+<li>Moltbook read/write</li>
+<li>Telegram integration</li>
+<li>Discord integration</li>
+</ul>
+            </article>
+        </div>
+    </main>
+
+
+    <footer class="border-t border-white/5 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-zinc-500">
+            <span>CORVUS<span class="gold-accent">.os</span> — local AI for Apple Silicon</span>
+            <span>Benchmarks are estimates; results may vary.</span>
         </div>
     </footer>
 
+    <!-- Download modal (placeholder: the original modal code was cut off in the source file) -->
+    <div id="download-modal" class="hidden fixed inset-0 z-[60] items-center justify-center bg-black/70 px-6" onclick="if (event.target === this) closeModal()">
+        <div class="glass-panel-gold rounded-2xl p-8 max-w-md w-full text-center gold-glow">
+            <div class="font-mono text-xs uppercase tracking-widest text-[#d4af37] mb-3">Download</div>
+            <h2 class="font-mono text-2xl font-bold text-white mb-3">Corvus for macOS</h2>
+            <p class="text-zinc-400 text-sm mb-6">The .dmg download is coming soon.</p>
+            <button onclick="closeModal()" class="font-mono text-xs font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-800 text-zinc-300 px-6 py-3 rounded hover:bg-zinc-800 cursor-pointer">Close</button>
+        </div>
+    </div>
+    <script>
+        function openModal() {
+            const m = document.getElementById('download-modal');
+            m.classList.remove('hidden'); m.classList.add('flex');
+        }
+        function closeModal() {
+            const m = document.getElementById('download-modal');
+            m.classList.add('hidden'); m.classList.remove('flex');
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+        if (location.hash === '#download') openModal();
+    </script>
+
+    <script>
+        (function () {
+            const views = ['home', 'architecture', 'performance', 'faq-normies', 'faq-devs'];
+            function show(h) {
+                if (!views.includes(h)) h = 'home';
+                document.querySelectorAll('main[data-view]').forEach(m => {
+                    m.style.display = m.dataset.view === h ? '' : 'none';
+                });
+                document.querySelectorAll('header nav a').forEach(a => {
+                    a.classList.toggle('nav-active', a.getAttribute('href') === '#' + h);
+                });
+                window.scrollTo(0, 0);
+            }
+            // Handle clicks directly instead of relying on URL hash changes,
+            // which some previews and embedded viewers block.
+            document.addEventListener('click', e => {
+                const a = e.target.closest('a[href^="#"]');
+                if (!a) return;
+                const h = a.getAttribute('href').slice(1);
+                e.preventDefault();
+                if (h === 'download') { show('home'); if (typeof openModal === 'function') openModal(); }
+                else show(h);
+                try { history.replaceState(null, '', '#' + h); } catch (err) {}
+            });
+            let initial = '';
+            try { initial = location.hash.replace('#', ''); } catch (err) {}
+            if (initial === 'download') { show('home'); } else { show(initial); }
+        })();
+    </script>
 </body>
 </html>
