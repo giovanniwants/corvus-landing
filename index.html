@@ -212,7 +212,7 @@
         html .focus\:border-\[\#d4af37\]:focus { border-color: var(--gold); }
         html .hover\:border-\[\#d4af37\]:hover { border-color: var(--chrome-text); }
         html .hover\:border-\[\#f472b6\]\/70:hover { border-color: rgba(201, 211, 225, 0.6); }
-        html a[href="#donate"] svg { fill: var(--chrome-text); }
+        html a[href="https://github.com/sponsors/giovanniwants"] svg { fill: var(--chrome-text); }
 
         /* Selection */
         html .selection\:bg-\[\#d4af37\]::selection,
@@ -344,8 +344,7 @@
             <div class="flex flex-col items-stretch gap-1.5">
                 <a href="https://github.com/giovanniwants/corvus-landing/releases/download/v0.1.0/Yanah-0.1.0.dmg.zip" class="inline-flex items-center justify-center font-mono text-xs font-bold uppercase tracking-wider bg-[#d4af37] text-black px-4 py-2 rounded hover:bg-[#e6be3e] transition-all transform hover:-translate-y-0.5 cursor-pointer shadow-lg shadow-[#d4af37]/20">Download Yanah Chat</a>
                 <div class="grid grid-cols-2 gap-1.5 w-full">
-                    <!-- Donate: opens the "coming soon" popup. When GitHub Sponsors is approved, change href to https://github.com/sponsors/YOUR-USERNAME and add target="_blank" -->
-                    <a href="#donate" class="inline-flex items-center justify-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-700 text-zinc-300 px-2 py-1.5 rounded hover:border-[#f472b6]/70 hover:text-white transition-colors"><svg width="10" height="10" viewBox="0 0 24 24" fill="#f472b6" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.5 2.2 4.5 6 4.1c2.2-.2 4 .9 6 3.1 2-2.2 3.8-3.3 6-3.1 3.8.4 5.6 4.4 4 7.6C19.5 16.4 12 21 12 21z"/></svg>Donate</a>
+                    <a href="https://github.com/sponsors/giovanniwants" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-700 text-zinc-300 px-2 py-1.5 rounded hover:border-[#f472b6]/70 hover:text-white transition-colors"><svg width="10" height="10" viewBox="0 0 24 24" fill="#f472b6" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.5 2.2 4.5 6 4.1c2.2-.2 4 .9 6 3.1 2-2.2 3.8-3.3 6-3.1 3.8.4 5.6 4.4 4 7.6C19.5 16.4 12 21 12 21z"/></svg>Donate</a>
                     <a href="mailto:corvuslanding.ai@gmail.com?subject=Yanah" class="inline-flex items-center justify-center font-mono text-[10px] font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-700 text-zinc-300 px-2 py-1.5 rounded hover:border-[#d4af37] hover:text-white transition-colors">Contact</a>
                 </div>
             </div>
@@ -387,8 +386,7 @@
                 <a href="#architecture" class="sm:order-first w-full sm:w-auto font-mono text-xs font-medium tracking-wider bg-zinc-900 border border-zinc-800 text-zinc-300 px-6 py-3 rounded hover:bg-zinc-800 transition-all text-center">
                     View Specs
                 </a>
-                <!-- Donate: opens the "coming soon" popup. When GitHub Sponsors is approved, change href to https://github.com/sponsors/YOUR-USERNAME and add target="_blank" -->
-                <a href="#donate" class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 font-mono text-xs font-medium tracking-wider bg-zinc-900 border border-zinc-800 text-zinc-300 px-6 py-3 rounded hover:border-[#f472b6]/60 hover:text-white transition-all">
+                <a href="https://github.com/sponsors/giovanniwants" target="_blank" rel="noopener noreferrer" class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 font-mono text-xs font-medium tracking-wider bg-zinc-900 border border-zinc-800 text-zinc-300 px-6 py-3 rounded hover:border-[#f472b6]/60 hover:text-white transition-all">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="#f472b6" aria-hidden="true" class="transition-transform group-hover:scale-110"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.5 2.2 4.5 6 4.1c2.2-.2 4 .9 6 3.1 2-2.2 3.8-3.3 6-3.1 3.8.4 5.6 4.4 4 7.6C19.5 16.4 12 21 12 21z"/></svg>
                     Donate
                 </a>
@@ -831,32 +829,14 @@
             </div>
             <nav class="flex flex-wrap gap-x-6 gap-y-2">
                 <a href="mailto:corvuslanding.ai@gmail.com?subject=Yanah" class="hover:text-[#d4af37] transition-colors">corvuslanding.ai@gmail.com</a>
-                <a href="#donate" class="hover:text-white transition-colors">Donate</a>
+                <a href="https://github.com/sponsors/giovanniwants" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Donate</a>
                 <a href="#invest" class="hover:text-[#d4af37] transition-colors">Invest With Us</a>
             </nav>
             <div class="md:text-right">Benchmarks are estimates; results may vary.</div>
         </div>
     </footer>
 
-    <!-- Donate popup (temporary, until GitHub Sponsors is approved) -->
-    <div id="donate-modal" class="hidden fixed inset-0 z-[60] items-center justify-center bg-black/70 px-6" onclick="if (event.target === this) closeDonate()">
-        <div class="glass-panel-gold rounded-2xl p-8 max-w-md w-full text-center gold-glow">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="#f472b6" aria-hidden="true" style="margin:0 auto 12px"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.5 2.2 4.5 6 4.1c2.2-.2 4 .9 6 3.1 2-2.2 3.8-3.3 6-3.1 3.8.4 5.6 4.4 4 7.6C19.5 16.4 12 21 12 21z"/></svg>
-            <h2 class="font-mono text-2xl font-bold text-white mb-3">Donations open soon</h2>
-            <p class="text-zinc-400 text-sm mb-6">Thanks for wanting to support Yanah! Donations are being set up now and will be live shortly.</p>
-            <button onclick="closeDonate()" class="font-mono text-xs font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-800 text-zinc-300 px-6 py-3 rounded hover:bg-zinc-800 cursor-pointer">Close</button>
-        </div>
-    </div>
     <script>
-        function openDonate() {
-            const m = document.getElementById('donate-modal');
-            m.classList.remove('hidden'); m.classList.add('flex');
-        }
-        function closeDonate() {
-            const m = document.getElementById('donate-modal');
-            m.classList.add('hidden'); m.classList.remove('flex');
-        }
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDonate(); });
         if (location.hash === '#download') window.location.assign('https://github.com/giovanniwants/corvus-landing/releases/download/v0.1.0/Yanah-0.1.0.dmg.zip');
     </script>
 
@@ -880,7 +860,6 @@
                 if (!a) return;
                 const h = a.getAttribute('href').slice(1);
                 e.preventDefault();
-                if (h === 'donate') { openDonate(); return; }
                 if (h === 'download') { window.location.assign('https://github.com/giovanniwants/corvus-landing/releases/download/v0.1.0/Yanah-0.1.0.dmg.zip'); return; }
                 else show(h);
                 try { history.replaceState(null, '', '#' + h); } catch (err) {}
