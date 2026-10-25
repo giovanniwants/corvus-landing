@@ -287,7 +287,7 @@
             <div class="eyebrow">YANAH.ai</div>
             <p class="lead">Download Yanah Chat and you'll have a private, working chatbot, even when the internet is off.</p>
             <div class="actions">
-                <a class="dl" href="https://github.com/giovanniwants/corvus-landing/releases/download/v0.1.0/Yanah-0.1.0.dmg.zip" onclick="closeIntro()">Download Yanah Chat (Completely Free)</a>
+                <a class="dl" href="https://github.com/giovanniwants/corvus-landing/releases" onclick="closeIntro()">Download Yanah Chat (Completely Free)</a>
                 <p class="req">Needs an M1 Mac or newer (late 2020 onward)<br>File size ~25GB to ~150GB depending on selected options</p>
                 <button class="cont" onclick="flyIntro()">Learn More →</button>
             </div>
@@ -342,7 +342,7 @@
                 <a href="#thinking-forward" class="hover:text-[#d4af37] transition-colors whitespace-nowrap">Thinking Forward</a>
             </nav>
             <div class="flex flex-col items-stretch gap-1.5">
-                <a href="https://github.com/giovanniwants/corvus-landing/releases/download/v0.1.0/Yanah-0.1.0.dmg.zip" class="inline-flex items-center justify-center font-mono text-xs font-bold uppercase tracking-wider bg-[#d4af37] text-black px-4 py-2 rounded hover:bg-[#e6be3e] transition-all transform hover:-translate-y-0.5 cursor-pointer shadow-lg shadow-[#d4af37]/20">Download Yanah Chat</a>
+                <a href="https://github.com/giovanniwants/corvus-landing/releases" class="inline-flex items-center justify-center font-mono text-xs font-bold uppercase tracking-wider bg-[#d4af37] text-black px-4 py-2 rounded hover:bg-[#e6be3e] transition-all transform hover:-translate-y-0.5 cursor-pointer shadow-lg shadow-[#d4af37]/20">Download Yanah Chat</a>
                 <div class="grid grid-cols-2 gap-1.5 w-full">
                     <a href="https://buymeacoffee.com/giovanniwae" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-700 text-zinc-300 px-2 py-1.5 rounded hover:border-[#f472b6]/70 hover:text-white transition-colors"><svg width="10" height="10" viewBox="0 0 24 24" fill="#f472b6" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.5 2.2 4.5 6 4.1c2.2-.2 4 .9 6 3.1 2-2.2 3.8-3.3 6-3.1 3.8.4 5.6 4.4 4 7.6C19.5 16.4 12 21 12 21z"/></svg>Donate</a>
                     <a href="mailto:corvuslanding.ai@gmail.com?subject=Yanah" class="inline-flex items-center justify-center font-mono text-[10px] font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-700 text-zinc-300 px-2 py-1.5 rounded hover:border-[#d4af37] hover:text-white transition-colors">Contact</a>
@@ -380,7 +380,7 @@
 
             <!-- CTA Group -->
             <div class="flex flex-col items-center justify-center w-full max-w-2xl mb-8">
-                <a href="https://github.com/giovanniwants/corvus-landing/releases/download/v0.1.0/Yanah-0.1.0.dmg.zip" class="inline-flex items-center justify-center w-full sm:w-auto font-mono text-xs font-bold uppercase tracking-wider bg-[#d4af37] text-black px-6 py-3 rounded hover:bg-[#e6be3e] transition-all cursor-pointer shadow-xl shadow-[#d4af37]/20 mb-2">
+                <a href="https://github.com/giovanniwants/corvus-landing/releases" class="inline-flex items-center justify-center w-full sm:w-auto font-mono text-xs font-bold uppercase tracking-wider bg-[#d4af37] text-black px-6 py-3 rounded hover:bg-[#e6be3e] transition-all cursor-pointer shadow-xl shadow-[#d4af37]/20 mb-2">
                     Download Yanah Chat (Completely Free)
                 </a>
                 <p class="text-xs text-[#d4af37]/90 font-mono mb-4">HD Space needed is 25GB to 150GB depending on options.</p>
@@ -875,7 +875,7 @@
     </footer>
 
     <script>
-        if (location.hash === '#download') window.location.assign('https://github.com/giovanniwants/corvus-landing/releases/download/v0.1.0/Yanah-0.1.0.dmg.zip');
+        if (location.hash === '#download') window.location.assign('https://github.com/giovanniwants/corvus-landing/releases');
     </script>
 
     <script>
@@ -898,7 +898,7 @@
                 if (!a) return;
                 const h = a.getAttribute('href').slice(1);
                 e.preventDefault();
-                if (h === 'download') { window.location.assign('https://github.com/giovanniwants/corvus-landing/releases/download/v0.1.0/Yanah-0.1.0.dmg.zip'); return; }
+                if (h === 'download') { window.location.assign('https://github.com/giovanniwants/corvus-landing/releases'); return; }
                 else show(h);
                 try { history.replaceState(null, '', '#' + h); } catch (err) {}
             });
