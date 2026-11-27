@@ -127,6 +127,8 @@
   .shot { padding: 0; background: none; border: 0; margin: 0; }
   .shot-img { display: block; width: 100%; height: auto; border-radius: 28px; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0,0,0,.12); }
   :root[data-theme="dark"] .shot-img { box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+  .demo-video { max-width: 900px; aspect-ratio: 16 / 9; margin: 40px auto 0; overflow: hidden; border-radius: 20px; background: var(--bg-alt); box-shadow: 0 24px 64px rgba(0,0,0,.14); }
+  .demo-video iframe { display: block; width: 100%; height: 100%; border: 0; }
   .window {
     max-width: 760px; margin: 0 auto; background: var(--bg); border: 1px solid var(--line);
     border-radius: 16px; overflow: hidden; text-align: left;
@@ -243,6 +245,7 @@
         <a class="btn" href="https://github.com/giovanniwants/Yanah/releases/download/0.3.3/Yanah-0.3.5.dmg" download>Download Yanah Chat (Completely Free)</a>
         <p class="fine">Needs an M1 Mac or newer (late 2020 onward) with 8GB of memory or more. macOS 14 or later.</p>
         <p class="fine">Download size: about 30GB on 8GB and 16GB Macs, about 45GB on Macs with more memory.</p>
+        <a class="btn" href="#demo-video">View The Demo Video</a>
         <div class="row-ctas" style="margin-top:8px">
           <a class="textlink" href="#features">What's new →</a>
           <a class="textlink" href="#architecture">View specs →</a>
@@ -263,6 +266,9 @@
              alt="Yanah Chat on a Mac: the Main Session with Yanah, chats with Marcus, the Devil's Advocate and Calliope in the sidebar, and the push-to-talk microphone next to Send.">
       </figure>
       <p class="caption">Yanah Chat on a Mac. No cloud. No subscription.</p>
+      <div class="demo-video" id="demo-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/_TRuvb85SNI" title="Yanah Chat demo video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
     </div>
   </section>
   <!-- What's new in Yanah Chat -->
